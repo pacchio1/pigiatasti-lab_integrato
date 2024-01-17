@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Se Vedemo</title>
+    <link rel="icon" type="image/svg" href="../logo/icon_sevedemo_viola.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <!--mio CSS-->
+    <link href="./css/top_navbar_style.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+    <!--sweet alert-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!--google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+</head>
+<body onload="pulsanteNav()">
+    <!--NAV BAR-->
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+          <i class="fas fa-bars"></i>
+        </label>
+        
+        <label class="logo">
+            <img src="../logo/icon_sevedemo.svg">
+        </label>
+        
+        <ul>
+          <li><a class="active" href="#top">Home</a></li>
+          <li><a onclick="cambioPagina('creazione_evento.html')">Crea</a></li>
+          <li><a onclick="cambioPagina('ricerca_eventi.html')">Partecipa</a></li>
+          <li id="accedi-areapers"></li>
+        </ul>
+    </nav>
+
+    <!--TITOLO-->
+
+    <div class="img"></div>
+    <div class="center">
+      <div class="title">SE VEDEMO</div>
+      <div class="sub_title">Organizza e partecipa a eventi</div>
+    </div>
+
+    <script src="js/script_functions.js"></script>
+</body>
+</html>

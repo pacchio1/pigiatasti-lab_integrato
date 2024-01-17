@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Se Vedemo</title>
+    <link rel="icon" type="image/png" href="../logo/icon_sevedemo_viola.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <!--mio CSS-->
+    <link href="./css/top_navbar_style.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/registrazione.css" rel="stylesheet">
+    <!--sweet alert-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+
+<body onload="avvio()">
+    <!--navbar-->
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+          <i class="fas fa-bars"></i>
+        </label>
+        
+        <label class="logo">
+            <img src="../logo/icon_sevedemo.svg">
+        </label>
+        
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a class="active" href="creazione_evento.html">Crea</a></li>
+          <li><a href="ricerca_eventi.html">Partecipa</a></li>
+          <li id="accedi-areapers"></li>
+        </ul>
+    </nav>
+
+    
+    <div class="image-container">
+        <img src="..\img\verticale_gruppo3.jpg">
+      </div>
+      <div class="registration-container">
+        <div class="form-container">
+
+    <form>
+        <h2>CREA IL TUO EVENTO!</h2>
+        <!--Titolo-->
+        <div class="Titolo">
+            <h3>Titolo</h3>
+            <input type="text" name="Titolo" id="Titolo" required maxlength="50">
+        </div>
+
+        <!--Categoria-->
+        <div class="Categoria">
+            <h3>Categoria</h3>
+            <select name="Categoria" id="Categoria" required>
+                <option value="" selected disabled>-Selezionare-</option>
+                <option value="1">Film</option>
+                <option value="2">Cocktail</option>
+                <option value="3">Giochi in scatola</option>
+                <option value="4">Videogiochi</option>
+                <option value="5">Ristorante</option>
+                <option value="6">Sport/Atività fisica</option>
+                <option value="7">Altro</option>
+            </select>
+        </div>
+
+        <!--Descrizione-->
+        <div class="Descrizione">
+            <h3>Descrizione</h3>
+            <textarea name="message" maxlength="500" rows="6" cols="45" placeholder="Scrivi qui una breve descrizione"
+                required id="descrizione"></textarea>
+        </div>
+
+        <!--Partecipanti-->
+        <div class="Partecipanti">
+            <h3>Partecipanti</h3>
+            <input type="number" name="Partecipanti" id="Partecipanti" required maxlength="5" max="99999">
+        </div>
+
+        <!--Data-->
+        <div class="Data">
+            <div class="data-inizio" >
+                <h3>Data ed ora d'inizio</h3>
+                <input type="datetime-local" id="eventDateTimeInizio" name="eventDateTime" required>
+            </div>
+            <div class="data-fine" >
+                <h3>Data e ora di fine</h3>
+                <input type="datetime-local" id="eventDateTimeFine" name="eventDateTime" required>
+            </div>
+            
+            
+        </div>
+
+        <!--Posizione-->
+
+        <div class="Posizione">
+            <h3 style="clear:both;">Posizione</h3>
+            <input type="text" id="textPosizione" placeholder="Inserisci il luogo da cercare" onclick="AggiornaMappa()">
+            <div id="container_mappa">
+                <div id="map"></div>
+                </div>
+              </div>
+
+        <!--Crea e Cancella-->
+        <input type="submit" value="Crea" onclick="processData()" style="margin-top:15px;">
+        <input type="reset" value="Cancella" style="margin-top:5px;">
+    </form>
+</div></div>
+</body>
+<script src="js/script_functions.js"></script>
+<script src="js/script_creazione_evento.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+
+</html>

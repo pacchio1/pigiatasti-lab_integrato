@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Se Vedemo</title>
+  <link rel="icon" type="image/png" href="../logo/icon_sevedemo_viola.svg">
+  <link rel="stylesheet" type="text/css" href="css/registrazione.css">
+  <!--sweet alert-->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+  <div class="image-container">
+    <img src="..\img\verticale_gruppo3.jpg">
+  </div>
+  <div class="registration-container">
+    <div class="form-container">
+      <h2>Registrazione</h2>
+      <form>
+        <div class="container">
+          <h1 class="h1-avatar">
+            Carica la tua foto profilo:
+          </h1>
+          <div class="avatar-upload">
+              <div class="avatar-edit">
+                  <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                  <label for="imageUpload"></label>
+              </div>
+              <div class="avatar-preview">
+                  <div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
+                  </div>
+              </div>
+          </div>
+      </div>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="cognome">Cognome:</label>
+        <input type="text" id="cognome" name="cognome" required>
+
+        <label for="telefono">Telefono:</label>
+        <input type="text" id="telefono" name="telefono" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="genere">Genere:</label>
+        <select id="genere" name="genere" required>
+          <option value="0">Seleziona il genere</option>
+          <option value="1">Maschio</option>
+          <option value="2">Femmina</option>
+          <option value="3">Altro</option>
+          <option value="4">Non Specificare</option>
+        </select>
+        <label for="descrizione">Descrizione personale:</label>
+        <textarea id="descrizione" name="descrizione" required></textarea>
+        <!--foto profilo-->
+        
+        <!--
+        <label for="foto_profilo">Foto del Profilo:</label>
+        <input type="file" id="foto_profilo" name="foto_profilo" required accept="image/*">
+        -->
+        
+
+        <input type="submit" value="Registrati" onclick="primiDati()">
+      </form>
+    </div>
+    <div>
+      <p>Hai già un account? <a href="Login.html">Accedi!</a></p>
+      <p>Torna alla <a href="index.html">Home</a></p>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="js/script_registrazione_utente.js"></script>
+</body>
+</html>

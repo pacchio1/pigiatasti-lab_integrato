@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Se Vedemo</title>
+    <link rel="icon" type="image/png" href="../logo/icon_sevedemo_viola.svg">
+    <!--mio CSS-->
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/profile_card_style.css" rel="stylesheet">
+    <link href="./css/side_navbar_style.css" rel="stylesheet">
+    <link href="./css/lista_eventi_utente_style.css" rel="stylesheet">
+    <link href="./css/registrazione.css" rel="stylesheet">
+    
+    
+    <!--sweet alert-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    
+</head>
+<body onload="dettagliUtente()">
+    <!--NAV BAR-->
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="../logo/icon_sevedemo.svg" alt="">
+                </span>
+                <div class="text logo-text">
+                    <span class="name">Se Vedemo</span>
+                </div>
+            </div>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+        <div class="menu-bar">
+            <div class="menu">
+                <ul class="menu-links">
+                    <li class="nav-link" id="dettagli">
+                        <a href="#">
+                            <i class='bx bx-user icon active' id="idettagli"></i>
+                            <span class="text nav-text active" id="spandettagli">Dettagli</span>
+                        </a>
+                    </li>
+                    <li class="nav-link" id="preferiti">
+                        <a href="#">
+                            <i class='bx bx-heart icon' id="ipreferiti"></i>
+                            <span class="text nav-text" id="spanpreferiti">Host preferiti</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-link" id="eventiO">
+                        <a href="#">
+                            <i class='bx bx-calendar-plus icon' id="ieventiO"></i>
+                            <span class="text nav-text" id="spaneventiO">Eventi organizzati</span>
+                        </a>
+                    </li>
+                    <li class="nav-link" id="eventiFutt">
+                        <a href="#">
+                            <i class='bx bx-calendar-event icon' id="ieventiFutt"></i>
+                            <span class="text nav-text" id="spaneventiFutt">Eventi iscritto</span>
+                        </a>
+                    </li>
+                    <li class="nav-link" id="eventiPass">
+                        <a href="#">
+                            <i class='bx bx-calendar-minus icon' id="ieventiPass"></i>
+                            <span class="text nav-text" id="spaneventiPass">Eventi partecipati</span>
+                        </a>
+                    </li>
+                    <li class="nav-link" id="recensioni">
+                        <a href="#">
+                            <i class='bx bx-star icon' id="irecen"></i>
+                            <span class="text nav-text" id="spanrecen">Recensioni</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="bottom-content">
+                <li class="">
+                    <a href="index.html">
+                        <i class='bx bx-home icon' ></i>
+                        <span class="text nav-text">Home</span>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="#" onclick="utenteLogout()">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+                
+            </div>
+        </div>
+    </nav>
+
+    <h2 id="titolo-pagina" style="text-align: center;"></h2>
+    <div id="btn-evento" style="text-align: center;"></div>
+
+    <section class="ricerca-contenuto" id="main">
+        <div class="ricerca-area-eventi" id="padre" style="width: 900px;">
+
+        </div>
+
+    </section>
+
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/script_functions.js"></script>
+    <script src="js/script_utente_pers.js"></script>
+    
+</body>
+</html>

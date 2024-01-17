@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Se Vedemo</title>
+    <link rel="icon" type="image/png" href="../logo/icon_sevedemo_viola.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <!--mio CSS-->
+    <link href="./css/top_navbar_style.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+
+</head>
+<body onload="pulsanteNav()">
+    <!--NAV BAR-->
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+          <i class="fas fa-bars"></i>
+        </label>
+        
+        <label class="logo">
+            <img src="../logo/icon_sevedemo.svg">
+        </label>
+        
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="creazione_evento.html">Crea</a></li>
+          <li><a class="active" href="#top">Partecipa</a></li>
+          <li id="accedi-areapers"></li>
+        </ul>
+    </nav>
+
+    <!--Ricerca Eventi-->
+
+    <div class="row ricerca-contenuto">
+        <div class="col ricerca-side-img-sx not-active">
+            <img src="../img/verticale_gruppo2_1.jpg" alt="" class="pp">
+        </div>
+        <div class="col ricerca-area-eventi" id="padre">
+            <!--Filtri-->
+            <form >
+                <input type="text" name="persona" id="persona" placeholder="Inserisci nome della persona">
+                <input type="text" name="citta" id="citta" placeholder="Inserisci nome della città">
+                <input type="date" name="data" id="data" placeholder="Seleziona il giorno">
+                <select name="categoria" id="categoria">
+                    <option value="">--Seleziona categoria--</option>
+                    <option value="film">Film</option>
+                    <option value="cocktail">Cocktail</option>
+                    <option value="giochiInScatola">Giochi in scatola</option>
+                    <option value="videogiochi">Videogiochi</option>
+                    <option value="ristorante">Ristorante</option>
+                    <option value="sport">Sport/Attività fisica</option>
+                    <option value="altro">Altro</option>
+                </select>
+                <input type="submit" value="Invia" onclick="filtraEventi()">
+            </form>
+            <div id="lista-eventi">
+
+            </div>
+            <!--Eventi-->
+            <!--
+            <div class="evento">
+                <div class="icona-evento">
+                    <img src="../img/giochi_scatola.jpg" width="175px" height="175px">
+                </div>
+                <div class="dettagli-evento">
+                    <p class="titolo-evento">Serata cluedo da Francesca</p>
+                    <p class="testo-evento">Host: Francesca Rossi</p>
+                    <p class="testo-evento">Giochi da tavolo</p>
+                    <p class="testo-evento">Partecipanti: 3/6</p>
+                    <p class="testo-evento">Data: 08/06/2023</p>
+                    <p class="testo-evento">Via Vittorio Alfieri, 10 Torino, TO</p>
+                </div>
+            </div>
+            -->
+
+
+        </div>
+        <div class="col ricerca-side-img-dx not-active">
+            <img src="../img/verticale_gruppo2_2.jpg" alt="" class="pp">
+        </div>
+      </div>
+    
+      <script src="./js/script_functions.js"></script>
+      <script src="./js/script_ricerca_eventi.js"></script>
+
+</body>
+</html>

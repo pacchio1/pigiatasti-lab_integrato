@@ -1,0 +1,40 @@
+.lista-pref{
+    align-self: center;
+    margin: auto;
+    margin-top: 10px;
+    background-color: #0e101d;
+    border: #510073 solid 4px;
+    padding: 5px;
+    align-content: center;
+    width: fit-content;
+    height: 200px;
+}
+
+.lista-icona-recen{
+    width: fit-content; 
+    height: fit-content;
+    float: left;
+}
+
+.lista-icona-recen img{
+    width: 175px;
+    height: 175px;
+}
+
+.lista-dettagli-recen{
+    margin-left: 20px;
+    height: 200px;
+    width: auto;
+    float: right;
+}
+
+.lista-titolo-recen{
+    color: white;
+    font-weight: bold;
+    margin: 0px;
+}
+
+.lista-testo-recen{
+    color:white;
+    margin: 0px;
+}

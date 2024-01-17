@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Se Vedemo</title>
+    <link rel="icon" type="image/png" href="../logo/icon_sevedemo_viola.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <!--mio CSS-->
+    <link href="./css/top_navbar_style.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+
+    <!--sweet alert-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
+
+</head>
+<body onload="pulsanteNav()">
+    <!--NAV BAR-->
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+          <i class="fas fa-bars"></i>
+        </label>
+        
+        <label class="logo">
+            <img src="../logo/icon_sevedemo.svg">
+        </label>
+        
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="creazione_evento.html">Crea</a></li>
+          <li><a href="ricerca_eventi.html">Partecipa</a></li>
+          <li id="accedi-areapers"></li>
+        </ul>
+    </nav>
+    
+    <div class="singolo-pagina">
+        <!--Immagine laterale
+        <div class="singolo-img-dx not-active">
+            <img src="../img/verticale_gruppo5.jpg" class="pp">
+        </div>
+        -->
+    
+        <!--Dettagli evento-->
+        <div class="singolo-dettagli-evento" id="padre">
+
+            
+        
+        </div>
+        <div class="div-mostra-partecipanti" id="mostraPartecipanti"></div>
+    </div>
+    
+    <script src="./js/script_functions.js"></script>
+    <script src="./js/script_evento_singolo.js"></script>
+</body>
+</html>

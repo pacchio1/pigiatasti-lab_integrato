@@ -1,0 +1,47 @@
+
+.lista-pref{
+    align-self: center;
+    margin: auto;
+    margin-top: 10px;
+    background-color: #0e101d;
+    border: #510073 solid 4px;
+    padding: 5px;
+    align-content: center;
+    width: 75%;
+    height: 200px;
+}
+
+.lista-icona-pref{
+    width: fit-content; 
+    height: fit-content;
+    float: left;
+}
+
+.lista-icona-pref img{
+    width: 175px;
+    height: 175px;
+}
+
+.lista-dettagli-pref{
+    margin-left: 20px;
+    height: 200px;
+    width: auto;
+    float: left;
+}
+
+.lista-titolo-pref{
+    color: white;
+    font-weight: bold;
+    margin: 0px;
+}
+
+.lista-testo-pref{
+    color:white;
+    margin: 0px;
+}
+
+@media (max-width: 992px){
+    .lista-icona-pref{
+        display: none;
+    }
+}

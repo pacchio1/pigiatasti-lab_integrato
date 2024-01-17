@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Se Vedemo</title>
+  <link rel="icon" type="image/png" href="../logo/icon_sevedemo_viola.svg">
+  <link rel="stylesheet" type="text/css" href="css/login.css">
+  <!--sweet alert-->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+  <div class="image-container">
+    <img src="..\img\verticale_gruppo3.jpg">
+  </div>
+  <div class="login-container">
+    <div class="form-container">
+      <h2>Login</h2>
+      <form>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <input type="submit" value="Accedi" onclick="provaLogin()">
+      </form>
+    </div>
+    <div>
+      <p>Non hai un account? <a href="Registrazione.html">Registrati!</a></p>
+      <p>Torna alla <a href="index.html">Home</a></p>
+    </div>
+  </div>
+  <script src="js/login.js"></script>
+</body>
+</html>

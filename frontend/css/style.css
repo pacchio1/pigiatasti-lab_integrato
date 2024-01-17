@@ -1,0 +1,446 @@
+body{
+    background-color: #0B0D1B;
+    color: white;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.img{
+    background: url('../../img/orizzontale_gruppo2.jpg')no-repeat;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  .img::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+  }
+  .center{
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    padding: 0 20px;
+    text-align: center;
+  }
+  .center .title{
+    font-family: 'Anton', sans-serif;
+    color: #fff;
+    font-size: 130px;
+    font-weight: 600;
+  }
+  .center .sub_title{
+    color: #fff;
+    font-size: 52px;
+    font-weight: 600;
+  }
+
+.ricerca-contenuto{
+    height: fit-content;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 350px auto 350px;
+}
+
+.row{
+    margin: 0px;
+}
+
+.ricerca-side-img-dx{
+    position: fixed;
+    box-sizing: border-box;
+    right: 0px;
+    width: 350px;  
+    height: 100%;
+    padding: 0%;
+    grid-column: 3/3;
+}
+
+.ricerca-side-img-sx{
+    position: fixed;
+    box-sizing: border-box;
+    left: 0px;
+    width: 350px;
+    height: 100%;
+    padding: 0%;
+    grid-column: 1/1;
+}
+
+.pp{
+    width:100%;
+    height:100%;
+}
+
+.ricerca-area-eventi{
+    align-content: center;
+    grid-column: 2/2;
+}
+
+.ricerca-evento{
+    align-self: center;
+    margin: auto;
+    margin-top: 10px;
+    background-color: #0e101d;
+    border: #510073 solid 4px;
+    padding: 5px;
+    align-content: center;
+    width: 600px;
+    height: 200px;
+}
+
+.ricerca-icona-evento{
+    width: fit-content; 
+    height: fit-content;
+    float: left;
+}
+
+.ricerca-icona-evento img{
+    width: 175px;
+    height: 175px;
+}
+
+.ricerca-dettagli-evento{
+    margin-left: 20px;
+    height: 200px;
+    width: auto;
+    float: right;
+}
+
+.ricerca-titolo-evento{
+    color: white;
+    font-weight: bold;
+    margin: 0px;
+}
+
+.ricerca-testo-evento{
+    color:white;
+    margin: 0px;
+}
+
+
+
+@media (max-width: 992px){
+    .ricerca-contenuto{
+        width: 100%;
+        display: grid;
+        justify-content: center;
+        grid-template-columns: auto;
+    }
+    .not-active{
+        display: none;
+    }
+}
+
+@media (max-width: 768px){
+    .ricerca-icona-evento{
+        display: none;
+    }
+    .ricerca-evento{
+        width:fit-content;
+    }
+}
+
+/*
+stile creazione evento
+*/
+textarea {
+    resize: none;
+}
+
+input, select {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+
+input[type="datetime-local"] {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.singolo-img-dx{
+    position: fixed;
+    box-sizing: border-box;
+    right: 0px;
+    width: auto;
+    height: 100%;
+    padding: 0%;
+}
+
+.singolo-dettagli{
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    display: inline-block;
+    width: 350px;
+}
+
+.singolo-dettagli-evento{
+    display: contents;
+    color: white;
+    float: right;
+    position: sticky;
+}
+.singolo-dettagli:hover{
+    color: #A84DD4;
+}
+
+
+.singolo-titolo-evento{
+    display: grid;
+    justify-content: center;
+    position: sticky;
+}
+
+.singolo-btnBack{
+    border: solid #A84DD4 2px;
+    color: #A84DD4;
+    grid-column: 1/1;
+    background: none;
+    width: 75px;
+    height: 75px;
+}
+
+.singolo-btnBack:hover{
+    background-color: #A84DD4;
+    border-color: #510073;
+    color: white;
+}
+
+.singolo-icona{
+    float:left;
+    width: 64px;
+    height: 64px;
+}
+
+.singolo-testo{
+    margin-bottom: 10px;
+}
+
+.singolo-btnIscrizione{
+    background: linear-gradient(90deg, #A84DD4 22.92%, #510073 100%);
+    border: none;
+    color: white;
+}
+
+.singolo-btnContatti{
+    background: linear-gradient(90deg, #510073 0%, #A84DD4 82.29%);
+    border: none;
+    color: white;
+}
+
+.singolo-btnIscrizione:hover, .singolo-btnContatti:hover{
+    background: #A84DD4;
+}
+
+.singolo-titolo{
+    grid-column: 2/2;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: xx-large;
+}
+
+.singolo-icona-titolo{
+    width: 75px;
+    height: 75px;
+    grid-column: 3/3;
+}
+
+.singolo-contenuto{
+    height: 100%;
+    width: 60%;
+    float: left;
+}
+
+.singolo-immagine-sinistra{
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    right: 0px;
+    top: 240px;
+    z-index: -1;
+}
+
+.singolo-immagine-sinistra img{
+    max-width: 680px;
+    height: 100%;
+
+}
+
+.singolo-descrizione{
+    margin-bottom: 30px;
+}
+
+.singolo-numero-partecipanti{
+    font-size: x-large;
+    margin-bottom: 30px;
+}
+
+.singolo-titolo-span{
+    font-size: xx-large;
+}
+
+.mostraPartecipanti{
+    width: 800px;
+    height: 300px;
+    overflow: auto;
+}
+
+.lista-recen{
+    align-self: center;
+    margin: auto;
+    margin-top: 10px;
+    background-color: #0e101d;
+    border: #510073 solid 4px;
+    padding: 5px;
+    align-content: center;
+    width: 600PX;
+    height: 200px;
+}
+
+.lista-icona-recen{
+    width: fit-content; 
+    height: fit-content;
+    float: left;
+}
+
+.lista-icona-recen img{
+    width: 175px;
+    height: 175px;
+}
+
+.lista-dettagli-recen{
+    margin-left: 20px;
+    height: 200px;
+    width: 350PX;
+    float: right;
+}
+
+.lista-titolo-recen{
+    color: white;
+    font-weight: bold;
+    margin: 0px;
+}
+
+.lista-testo-recen{
+    color:white;
+    margin: 0px;
+    white-space: pre-wrap;
+}
+
+.btn-crea-recen{
+    border: solid #A84DD4 2px;
+    color: #A84DD4;
+    grid-column: 1/1;
+    background: none;
+    padding-left:10px;
+    padding-right:10px;
+    height: 30px;
+}
+.btn-crea-recen:hover{
+    background-color: #A84DD4;
+    border-color: #510073;
+    color: white;
+}
+
+
+
+/* MODAL RECENSIONE */
+
+.bg-modal {
+	background-color: rgba(0, 0, 0, 0.8);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+    left: 0;
+	display: none;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal-contents {
+	height: 300px;
+	width: 500px;
+	background-color: white;
+    color:black;
+	text-align: center;
+	padding: 20px;
+	position: relative;
+	border-radius: 4px;
+}
+
+.input-modal {
+	margin: 15px auto;
+	display: block;
+	width: 50%;
+	padding: 8px;
+	border: 1px solid gray;
+}
+
+.btn-close {
+	position: absolute;
+	top: 0;
+	right: 10px;
+	font-size: 42px;
+	color: #333;
+	transform: rotate(45deg);
+	cursor: pointer;
+}
+
+.btn-close:hover {
+    color: #666;
+}
+
+
+.lista-utente {
+    align-self: center;
+    margin: auto;
+    margin-top: 10px;
+    background-color: #0e101d;
+    border: #510073 solid 4px;
+    padding: 5px;
+    align-content: center;
+    width: 250px;
+    height: 125px;
+    display: inline-block;
+}
+
+.lista-utente-nome{
+    color: white;
+    font-weight: bold;
+    margin: 0px;
+}
+
+.lista-utente-icona{
+    width: fit-content; 
+    height: fit-content;
+    float: left;
+}
+
+.lista-utente-icona img{
+    width: 100px;
+    height: 100px;
+}
+
+.lista-utente-dettagli{
+    margin-left: 105px;
+    margin-top: 30px;
+    height: 70px;
+    width: fit-content;
+}
