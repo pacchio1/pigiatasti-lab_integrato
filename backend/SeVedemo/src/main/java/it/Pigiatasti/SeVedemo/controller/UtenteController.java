@@ -1,4 +1,5 @@
 package it.Pigiatasti.SeVedemo.controller;
+
 import it.Pigiatasti.SeVedemo.entity.Evento;
 import it.Pigiatasti.SeVedemo.entity.Recensione;
 import it.Pigiatasti.SeVedemo.entity.Utente;
@@ -16,9 +17,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 
+@CrossOrigin(origins = "*")
 @RestController
-@CrossOrigin
 @RequestMapping("/users")
 public class UtenteController {
     private UtenteServiceImpl utenteServiceImpl;
@@ -33,17 +35,17 @@ public class UtenteController {
         return utenteServiceImpl.selezionaTuttiUtenti();
     }
 
-    @DeleteMapping("/{id}")  //Delete di un utente per id
+    @DeleteMapping("/{id}") // Delete di un utente per id
     public void cancellaUtente(@PathVariable int id) {
         utenteServiceImpl.cancellaUtentePerId(id);
     }
 
     @PostMapping("/user/{id}")
-    public Optional<Utente> ottieniUtente(@PathVariable int id){
+    public Optional<Utente> ottieniUtente(@PathVariable int id) {
         return utenteServiceImpl.ottieniUtentePerId(id);
     }
 
-    @PostMapping("/update/{id}") //Update
+    @PostMapping("/update/{id}") // Update
     public ResponseEntity<?> aggiornaUtente(@PathVariable int id, @RequestBody Utente utente) {
         try {
             Utente utenteAggiornato = utenteServiceImpl.aggiornaUtente(utente, id);
@@ -53,42 +55,44 @@ public class UtenteController {
         }
     }
 
-    @GetMapping("/reviews/{id}")  //Get recensioni per un utente
-    public List<RecensioniUtenteResponse> getRecensioniUtente(@PathVariable int id){
+    @GetMapping("/reviews/{id}") // Get recensioni per un utente
+    public List<RecensioniUtenteResponse> getRecensioniUtente(@PathVariable int id) {
         return utenteServiceImpl.recensioniUtente(id);
     }
 
-    @GetMapping("/events/{id}") //Get lista eventi che ha creato un utente
-    public List<EventiUtenteResponse> getEventiUtente(@PathVariable int id){
+    @GetMapping("/events/{id}") // Get lista eventi che ha creato un utente
+    public List<EventiUtenteResponse> getEventiUtente(@PathVariable int id) {
         return utenteServiceImpl.eventiUtente(id);
     }
 
     @DeleteMapping("event/{id}")
-    public boolean cancellaEvento(@PathVariable int id) { //Delete dell'evento in base all'id, restituisce true se cancellato false se non cancellato
+    public boolean cancellaEvento(@PathVariable int id) { // Delete dell'evento in base all'id, restituisce true se
+                                                          // cancellato false se non cancellato
         return utenteServiceImpl.cancellaEvento(id);
     }
 
     @PostMapping("/reviews/create")
-    public void creaRecensione(@RequestBody Recensione recensione){
+    public void creaRecensione(@RequestBody Recensione recensione) {
         utenteServiceImpl.creaRecensione(recensione);
     }
 
-    @PostMapping("/getid/{email}")   // Dall email restituisco l utente
-    public Optional<Utente> getIdUtenteByEmail(@PathVariable String email){
+    @PostMapping("/getid/{email}") // Dall email restituisco l utente
+    public Optional<Utente> getIdUtenteByEmail(@PathVariable String email) {
         return utenteServiceImpl.utentePerEmail(email);
     }
 
     @PostMapping("/events/partecipations/{id}")
-    public List<EventiResponsePassati> getEventiPartecipatiUtente(@PathVariable int id){
+    public List<EventiResponsePassati> getEventiPartecipatiUtente(@PathVariable int id) {
         return utenteServiceImpl.eventiPartecipatiUtente(id);
     }
 
     @GetMapping("events/passati/{id}")
-    public List<EventiResponsePassati> getEventiPassatiUtente(@PathVariable int id){
+    public List<EventiResponsePassati> getEventiPassatiUtente(@PathVariable int id) {
         return utenteServiceImpl.eventiOrganizzatiPassati(id);
     }
+
     @GetMapping("events/futuri/{id}")
-    public List<EventiResponseFuturi> getEventiFuturiUtente(@PathVariable int id){
+    public List<EventiResponseFuturi> getEventiFuturiUtente(@PathVariable int id) {
         return utenteServiceImpl.eventiOrganizzatiFuturi(id);
     }
 }

@@ -13,11 +13,12 @@ import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import java.time.LocalDateTime;
 import java.util.List;
+
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RequestMapping("/event")
 public class EventoController {
 
@@ -29,25 +30,27 @@ public class EventoController {
     }
 
     @GetMapping("/events")
-    public List<EventiResponse> getTuttiEventiAttivi(){
+    public List<EventiResponse> getTuttiEventiAttivi() {
         return eventoServiceImpl.GetTuttiEventiAttivi();
     }
 
     @GetMapping("/events/past")
-    public List<EventiResponsePassati> getTuttiEventi(){
+    public List<EventiResponsePassati> getTuttiEventi() {
         return eventoServiceImpl.GetTuttiEventi();
     }
 
     @PostMapping("/events/categoria/{categoria}")
-    public List<EventiResponse> getTuttiEventiCategori(@PathVariable String categoria){
+    public List<EventiResponse> getTuttiEventiCategori(@PathVariable String categoria) {
         return eventoServiceImpl.GetTuttiEventiCategoria(categoria);
     }
+
     @PostMapping("/events/host/{host}")
-    public List<EventiResponse> getTuttiEventiHost(@PathVariable String host){
+    public List<EventiResponse> getTuttiEventiHost(@PathVariable String host) {
         return eventoServiceImpl.GetTuttiEventiHost(host);
     }
+
     @PostMapping("/events/citta/{citta}")
-    public List<EventiResponse> getTuttiEventiCitta(@PathVariable String citta){
+    public List<EventiResponse> getTuttiEventiCitta(@PathVariable String citta) {
         return eventoServiceImpl.GetTuttiEventiCittà(citta);
     }
 
@@ -55,8 +58,9 @@ public class EventoController {
     public List<EventiResponse> getTuttiEventiData(@PathVariable("data") String data) {
         return eventoServiceImpl.GetTuttiEventiData(data);
     }
+
     @PostMapping("/{id}")
-    public List<EventiResponse> getEventoPerId(@PathVariable("id") int id){
+    public List<EventiResponse> getEventoPerId(@PathVariable("id") int id) {
         return eventoServiceImpl.GetTuttiEventiPerId(id);
     }
 
@@ -71,7 +75,7 @@ public class EventoController {
     }
 
     @PostMapping("/partecipanti/{id}")
-    public List<UtentePartecipantiResponse> getPartecipantiEvento(@PathVariable("id")int id){
+    public List<UtentePartecipantiResponse> getPartecipantiEvento(@PathVariable("id") int id) {
         return eventoServiceImpl.getPartecipantiEvento(id);
     }
 
@@ -81,8 +85,7 @@ public class EventoController {
                 filtriRequest.getCitta(),
                 filtriRequest.getCategoria(),
                 filtriRequest.getHost(),
-                filtriRequest.getData()
-        );
+                filtriRequest.getData());
     }
 
 }

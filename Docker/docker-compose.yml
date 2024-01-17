@@ -1,40 +1,23 @@
 version: '3'
-
 services:
-  db:
-    image: mysql:8.0.33-debian
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: ''
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+  backend:
+    image: amazoncorretto:latest
     volumes:
-      - ./dbdump.sql:/docker-entrypoint-initdb.d/dbdump.sql
-    ports:
-      - '3306:3306'
-  app:
-    image: openjdk:17-jdk-alpine3.14
-    ports:
-      - '8080:8080'
-    depends_on:
-      - db
-    volumes:
-      - ./app.jar:/app.jar
-    command: ["java", "-jar", "/app.jar"]
-  apache:
-    image: httpd:2.4.57-bookworm
-    ports:
-      - '80:80'
-    depends_on:
-      - app
-      - worker
-    volumes:
-      - ./httpd.conf:/usr/local/apache2/conf/httpd.conf
-      - html:/usr/local/apache2/htdocs/
-  worker:
-    image: alpine:3.18.2
-    volumes:
-      - ../frontend:/html
-    command: ["/bin/sh", "-c", "while true; do sleep 3600; done"]
+      - ./backend:/app/backend
+    command: sh -c "apt-get update && apt-get install -y openjdk-17-jdk && chmod -R 771 /app/backend && chown -R user:user /app/backend"
 
-volumes:
-  html:
+  db:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_DATABASE=sevedemo
+      - MYSQL_USER=pigiatasti
+      - MYSQL_PASSWORD=odiojava
+    command: sh -c "mysql -u root -p 3306 -D sevedemo < dbdupm.sql"
+
+  frontend:
+    image: httpd:2.4
+    volumes:
+      - ./frontend:/var/www/html
+    ports:
+      - 80:80

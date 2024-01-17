@@ -9,24 +9,27 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
+@CrossOrigin(origins = "*")
 @RestController
-@CrossOrigin
 @RequestMapping("/partecipation")
 public class PartecipazioneController {
 
     private PartecipazioneServiceImpl partecipazioneService;
 
     @Autowired
-    public PartecipazioneController(PartecipazioneServiceImpl partecipazioneService){
+    public PartecipazioneController(PartecipazioneServiceImpl partecipazioneService) {
         this.partecipazioneService = partecipazioneService;
     }
 
     @PostMapping("/passate/{id}")
-    public List<Partecipazione> getPartecipazioniPassate(@PathVariable int id){
+    public List<Partecipazione> getPartecipazioniPassate(@PathVariable int id) {
         return partecipazioneService.getPartecipazioniPassate(id);
     }
+
     @PostMapping("/future/{id}")
-    public List<Partecipazione> getpartecipazioniFuture(@PathVariable int id){
+    public List<Partecipazione> getpartecipazioniFuture(@PathVariable int id) {
         return partecipazioneService.getPartecipazioniFuture(id);
     }
 
@@ -41,7 +44,7 @@ public class PartecipazioneController {
     }
 
     @PostMapping("/getId")
-    public Partecipazione getPartecipazione(@RequestBody PartecipazioniRequest requestDTO){
+    public Partecipazione getPartecipazione(@RequestBody PartecipazioniRequest requestDTO) {
         return partecipazioneService.PartecipazionePerId(requestDTO.getIdUtente(), requestDTO.getIdEvento());
     }
 

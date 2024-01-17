@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
+@CrossOrigin(origins = "*")
 @RequestMapping("/images")
 @RestController
 public class ImageController {
@@ -17,7 +20,8 @@ public class ImageController {
     private StorageService service;
 
     @PostMapping("/upload")
-    public ResponseEntity<?> uploadImageToFileSystem(@RequestParam("image")MultipartFile file, @RequestParam("id_utente") Integer id_utente) throws IOException {
+    public ResponseEntity<?> uploadImageToFileSystem(@RequestParam("image") MultipartFile file,
+            @RequestParam("id_utente") Integer id_utente) throws IOException {
         String uploadImage = service.uploadImageToFileSystem(file, id_utente);
         return ResponseEntity.status(HttpStatus.OK).body(uploadImage);
 

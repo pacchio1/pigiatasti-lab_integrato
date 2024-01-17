@@ -1,6 +1,5 @@
 package it.Pigiatasti.SeVedemo.controller;
 
-
 import it.Pigiatasti.SeVedemo.entity.Recensione;
 import it.Pigiatasti.SeVedemo.payload.request.RecensioniRequest;
 import it.Pigiatasti.SeVedemo.payload.request.RecensioniRequestIsPresent;
@@ -9,9 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
+@CrossOrigin(origins = "*")
 @RestController
-@CrossOrigin
 @RequestMapping("/reviews")
 public class RecensioneController {
 
@@ -22,10 +22,10 @@ public class RecensioneController {
         this.recensioneService = recensioneService;
     }
 
-
     @PostMapping("/create")
     public boolean creaRecensione(@RequestBody RecensioniRequest recensione) {
-       return recensioneService.creaRecensione(recensione.getIdUtente(), recensione.getIdEvento(), recensione.getVoto(), recensione.getDescrizione());
+        return recensioneService.creaRecensione(recensione.getIdUtente(), recensione.getIdEvento(),
+                recensione.getVoto(), recensione.getDescrizione());
     }
 
     @GetMapping("/{id}")
@@ -39,7 +39,7 @@ public class RecensioneController {
     }
 
     @PostMapping("/isCreated")
-    public Recensione isRecensioneCreated(@RequestBody RecensioniRequestIsPresent recensione){
+    public Recensione isRecensioneCreated(@RequestBody RecensioniRequestIsPresent recensione) {
         return recensioneService.isPresent(recensione);
     }
 }
