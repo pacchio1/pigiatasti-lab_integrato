@@ -1,18 +1,23 @@
 version: '3.8'
 services:
-  spring:
+  all:
     image: debian:latest
     volumes:
       - ../backend:/app/backend
       - ../frontend:/var/www/html
-      - ../db/dump.sql:/app/db/dump.sql
+      - ../db/dump_sc.sql:/app/db/dump.sql
     command: sh -c "
-          apt-get update -y
-          && apt-get install -y mariadb-client mariadb-server openjdk-17-jdk nginx
-          && chmod -R 771 /app/*
-          && mysql -u root -p sevedemo < /app/db/dump.sql
-          && chown -R $(whoami):$(whoami) /app/*
-          && cd /app/backend
-          && ./mvnw clean install
+          apt-get update -y \
+          && apt-get install -y mariadb-client mariadb-server openjdk-17-jdk nginx \
+          && chmod -R 771 /app/* \
+          && service mariadb start \
+          && mysql -u root -p'' -e 'CREATE DATABASE sevedemo;' \
+          && mysql -u root -p'' sevedemo < /app/db/dump.sql \
+          && chown -R \$(whoami):\$(whoami) /app/* \
+          && cd /app/backend \
+          && ./mvnw clean install \
           && ./mvnw spring-boot:run"
-          "
+    ports:
+      - 80:80
+      - 8080:8080
+      - 3306:3306

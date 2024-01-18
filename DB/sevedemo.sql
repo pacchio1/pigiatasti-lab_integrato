@@ -3,29 +3,27 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Lug 13, 2023 alle 11:34
--- Versione del server: 10.4.28-MariaDB
--- Versione PHP: 8.2.4
+-- Generation Time: Jan 18, 2024 at 03:30 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-SET character_set_client = utf8;
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-CREATE DATABASE IF NOT EXISTS sevedemo;
-USE sevedemo;
+
 --
 -- Database: `sevedemo`
 --
 
 DELIMITER $$
 --
--- Procedure
+-- Procedures
 --
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetEventiAttiviFiltrati` (IN `sp_filtroCategoria` VARCHAR(255), IN `sp_filtroCitta` VARCHAR(255), IN `sp_filtroData` DATETIME, IN `sp_filtroHost` VARCHAR(255))   BEGIN
     DECLARE nome_host TEXT;
@@ -413,7 +411,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `categoria`
+-- Table structure for table `categoria`
 --
 
 CREATE TABLE `categoria` (
@@ -422,7 +420,7 @@ CREATE TABLE `categoria` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dump dei dati per la tabella `categoria`
+-- Dumping data for table `categoria`
 --
 
 INSERT INTO `categoria` (`id_categoria`, `categoria`) VALUES
@@ -437,7 +435,7 @@ INSERT INTO `categoria` (`id_categoria`, `categoria`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `evento`
+-- Table structure for table `evento`
 --
 
 CREATE TABLE `evento` (
@@ -453,7 +451,7 @@ CREATE TABLE `evento` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dump dei dati per la tabella `evento`
+-- Dumping data for table `evento`
 --
 
 INSERT INTO `evento` (`id_evento`, `id_utente`, `data_inizio`, `data_fine`, `titolo`, `descrizione`, `n_max_partecipanti`, `posizione`, `id_categoria`) VALUES
@@ -473,7 +471,7 @@ INSERT INTO `evento` (`id_evento`, `id_utente`, `data_inizio`, `data_fine`, `tit
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `file_data`
+-- Table structure for table `file_data`
 --
 
 CREATE TABLE `file_data` (
@@ -485,7 +483,7 @@ CREATE TABLE `file_data` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dump dei dati per la tabella `file_data`
+-- Dumping data for table `file_data`
 --
 
 INSERT INTO `file_data` (`id`, `id_utente`, `name`, `type`, `file_path`) VALUES
@@ -494,7 +492,7 @@ INSERT INTO `file_data` (`id`, `id_utente`, `name`, `type`, `file_path`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `gender`
+-- Table structure for table `gender`
 --
 
 CREATE TABLE `gender` (
@@ -503,7 +501,7 @@ CREATE TABLE `gender` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dump dei dati per la tabella `gender`
+-- Dumping data for table `gender`
 --
 
 INSERT INTO `gender` (`id_gender`, `sesso`) VALUES
@@ -515,7 +513,7 @@ INSERT INTO `gender` (`id_gender`, `sesso`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `partecipazione`
+-- Table structure for table `partecipazione`
 --
 
 CREATE TABLE `partecipazione` (
@@ -525,7 +523,7 @@ CREATE TABLE `partecipazione` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dump dei dati per la tabella `partecipazione`
+-- Dumping data for table `partecipazione`
 --
 
 INSERT INTO `partecipazione` (`id_partecipazione`, `id_utente`, `id_evento`) VALUES
@@ -571,7 +569,7 @@ INSERT INTO `partecipazione` (`id_partecipazione`, `id_utente`, `id_evento`) VAL
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `preferiti`
+-- Table structure for table `preferiti`
 --
 
 CREATE TABLE `preferiti` (
@@ -581,7 +579,7 @@ CREATE TABLE `preferiti` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dump dei dati per la tabella `preferiti`
+-- Dumping data for table `preferiti`
 --
 
 INSERT INTO `preferiti` (`id`, `id_utente`, `id_utente_preferito`) VALUES
@@ -591,7 +589,7 @@ INSERT INTO `preferiti` (`id`, `id_utente`, `id_utente_preferito`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `recensione`
+-- Table structure for table `recensione`
 --
 
 CREATE TABLE `recensione` (
@@ -603,7 +601,7 @@ CREATE TABLE `recensione` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dump dei dati per la tabella `recensione`
+-- Dumping data for table `recensione`
 --
 
 INSERT INTO `recensione` (`id_recensione`, `id_utente`, `id_evento`, `voto`, `descrizione`) VALUES
@@ -624,7 +622,7 @@ INSERT INTO `recensione` (`id_recensione`, `id_utente`, `id_evento`, `voto`, `de
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `utente`
+-- Table structure for table `utente`
 --
 
 CREATE TABLE `utente` (
@@ -640,7 +638,7 @@ CREATE TABLE `utente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dump dei dati per la tabella `utente`
+-- Dumping data for table `utente`
 --
 
 INSERT INTO `utente` (`id_utente`, `email`, `nome`, `cognome`, `telefono`, `password`, `id_gender`, `presentazione`, `ruolo`) VALUES
@@ -666,17 +664,17 @@ INSERT INTO `utente` (`id_utente`, `email`, `nome`, `cognome`, `telefono`, `pass
 (22, 'example@example34.com', 'Paolo', 'PIeravino', '1234', '$2a$10$Hv3zr66bJbgsQ2sO7L.dput9FuKKuc4VLoT0iT.5PGFfvwKDeYgf.', 1, 'ciao', 'utente');
 
 --
--- Indici per le tabelle scaricate
+-- Indexes for dumped tables
 --
 
 --
--- Indici per le tabelle `categoria`
+-- Indexes for table `categoria`
 --
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`id_categoria`);
 
 --
--- Indici per le tabelle `evento`
+-- Indexes for table `evento`
 --
 ALTER TABLE `evento`
   ADD PRIMARY KEY (`id_evento`),
@@ -684,7 +682,7 @@ ALTER TABLE `evento`
   ADD KEY `IdUtente` (`id_utente`);
 
 --
--- Indici per le tabelle `file_data`
+-- Indexes for table `file_data`
 --
 ALTER TABLE `file_data`
   ADD PRIMARY KEY (`id`),
@@ -692,13 +690,13 @@ ALTER TABLE `file_data`
   ADD KEY `id_utente` (`id_utente`);
 
 --
--- Indici per le tabelle `gender`
+-- Indexes for table `gender`
 --
 ALTER TABLE `gender`
   ADD PRIMARY KEY (`id_gender`);
 
 --
--- Indici per le tabelle `partecipazione`
+-- Indexes for table `partecipazione`
 --
 ALTER TABLE `partecipazione`
   ADD PRIMARY KEY (`id_partecipazione`),
@@ -707,14 +705,14 @@ ALTER TABLE `partecipazione`
   ADD KEY `FK_Partecipazione_Evento` (`id_evento`);
 
 --
--- Indici per le tabelle `preferiti`
+-- Indexes for table `preferiti`
 --
 ALTER TABLE `preferiti`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `UQ_idUtente_idPreferito` (`id_utente`,`id_utente_preferito`);
 
 --
--- Indici per le tabelle `recensione`
+-- Indexes for table `recensione`
 --
 ALTER TABLE `recensione`
   ADD PRIMARY KEY (`id_recensione`),
@@ -722,7 +720,7 @@ ALTER TABLE `recensione`
   ADD KEY `FK_Recensione_Evento` (`id_evento`);
 
 --
--- Indici per le tabelle `utente`
+-- Indexes for table `utente`
 --
 ALTER TABLE `utente`
   ADD PRIMARY KEY (`id_utente`),
@@ -730,95 +728,95 @@ ALTER TABLE `utente`
   ADD KEY `id_gender` (`id_gender`);
 
 --
--- AUTO_INCREMENT per le tabelle scaricate
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT per la tabella `categoria`
+-- AUTO_INCREMENT for table `categoria`
 --
 ALTER TABLE `categoria`
   MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT per la tabella `evento`
+-- AUTO_INCREMENT for table `evento`
 --
 ALTER TABLE `evento`
   MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
--- AUTO_INCREMENT per la tabella `file_data`
+-- AUTO_INCREMENT for table `file_data`
 --
 ALTER TABLE `file_data`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT per la tabella `gender`
+-- AUTO_INCREMENT for table `gender`
 --
 ALTER TABLE `gender`
   MODIFY `id_gender` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT per la tabella `partecipazione`
+-- AUTO_INCREMENT for table `partecipazione`
 --
 ALTER TABLE `partecipazione`
   MODIFY `id_partecipazione` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
--- AUTO_INCREMENT per la tabella `preferiti`
+-- AUTO_INCREMENT for table `preferiti`
 --
 ALTER TABLE `preferiti`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT per la tabella `recensione`
+-- AUTO_INCREMENT for table `recensione`
 --
 ALTER TABLE `recensione`
   MODIFY `id_recensione` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
--- AUTO_INCREMENT per la tabella `utente`
+-- AUTO_INCREMENT for table `utente`
 --
 ALTER TABLE `utente`
   MODIFY `id_utente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- Limiti per le tabelle scaricate
+-- Constraints for dumped tables
 --
 
 --
--- Limiti per la tabella `evento`
+-- Constraints for table `evento`
 --
 ALTER TABLE `evento`
   ADD CONSTRAINT `FK_Categoria_Evento` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Limiti per la tabella `file_data`
+-- Constraints for table `file_data`
 --
 ALTER TABLE `file_data`
   ADD CONSTRAINT `Fk_Foto_id_utente` FOREIGN KEY (`id_utente`) REFERENCES `utente` (`id_utente`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Limiti per la tabella `partecipazione`
+-- Constraints for table `partecipazione`
 --
 ALTER TABLE `partecipazione`
   ADD CONSTRAINT `FK_Partecipazione_Evento` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id_evento`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_Partecipazione_Utente` FOREIGN KEY (`id_utente`) REFERENCES `utente` (`id_utente`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Limiti per la tabella `preferiti`
+-- Constraints for table `preferiti`
 --
 ALTER TABLE `preferiti`
   ADD CONSTRAINT `preferiti_ibfk_1` FOREIGN KEY (`id_utente`) REFERENCES `utente` (`id_utente`);
 
 --
--- Limiti per la tabella `recensione`
+-- Constraints for table `recensione`
 --
 ALTER TABLE `recensione`
   ADD CONSTRAINT `FK_Recensione_Evento` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id_evento`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_Recensione_Utente` FOREIGN KEY (`id_utente`) REFERENCES `utente` (`id_utente`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Limiti per la tabella `utente`
+-- Constraints for table `utente`
 --
 ALTER TABLE `utente`
   ADD CONSTRAINT `FK_Gender_Utente` FOREIGN KEY (`id_gender`) REFERENCES `gender` (`id_gender`) ON DELETE NO ACTION ON UPDATE CASCADE;
