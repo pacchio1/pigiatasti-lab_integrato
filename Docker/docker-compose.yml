@@ -1,23 +1,18 @@
-version: '3'
+version: '3.8'
 services:
-  backend:
-    image: amazoncorretto:latest
+  spring:
+    image: debian:latest
     volumes:
-      - ./backend:/app/backend
-    command: sh -c "apt-get update && apt-get install -y openjdk-17-jdk && chmod -R 771 /app/backend && chown -R user:user /app/backend"
-
-  db:
-    image: mysql:latest
-    environment:
-      - MYSQL_ROOT_PASSWORD=
-      - MYSQL_DATABASE=sevedemo
-      - MYSQL_USER=pigiatasti
-      - MYSQL_PASSWORD=odiojava
-    command: sh -c "mysql -u root -p 3306 -D sevedemo < dbdupm.sql"
-
-  frontend:
-    image: httpd:2.4
-    volumes:
-      - ./frontend:/var/www/html
-    ports:
-      - 80:80
+      - ../backend:/app/backend
+      - ../frontend:/var/www/html
+      - ../db/dump.sql:/app/db/dump.sql
+    command: sh -c "
+          apt-get update -y
+          && apt-get install -y mariadb-client mariadb-server openjdk-17-jdk nginx
+          && chmod -R 771 /app/*
+          && mysql -u root -p sevedemo < /app/db/dump.sql
+          && chown -R $(whoami):$(whoami) /app/*
+          && cd /app/backend
+          && ./mvnw clean install
+          && ./mvnw spring-boot:run"
+          "
