@@ -5,7 +5,7 @@ services:
     volumes:
       - ../backend:/app/backend
       - ../frontend:/var/www/html
-      - ../db/dump_sc.sql:/app/db/dump.sql
+      - ../db/sevedemo.sql:/app/db/dump.sql
     command: sh -c "
           apt-get update -y \
           && apt-get install -y mariadb-client mariadb-server openjdk-17-jdk nginx \
@@ -21,3 +21,5 @@ services:
       - 80:80
       - 8080:8080
       - 3306:3306
+#&& mysql -u root -p'' -e 'CREATE DATABASE sevedemo;' \
+#&& mysql -u root -p'' -e 'DROP DATABASE sevedemo;' \
