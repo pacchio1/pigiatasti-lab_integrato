@@ -1,25 +1,38 @@
 version: '3.8'
 services:
-  all:
-    image: debian:latest
+  ubuntu:
+    image: ubuntu:latest
     volumes:
       - ../backend:/app/backend
       - ../frontend:/var/www/html
-      - ../db/sevedemo.sql:/app/db/dump.sql
-    command: sh -c "
-          apt-get update -y \
-          && apt-get install -y mariadb-client mariadb-server openjdk-17-jdk nginx \
-          && chmod -R 771 /app/* \
-          && service mariadb start \
-          && mysql -u root -p'' -e 'CREATE DATABASE sevedemo;' \
-          && mysql -u root -p'' sevedemo < /app/db/dump.sql \
-          && chown -R \$(whoami):\$(whoami) /app/* \
-          && cd /app/backend \
-          && ./mvnw clean install \
-          && ./mvnw spring-boot:run"
+    command: >
+      sh -c "apt-get update -y
+      && apt-get install -y openjdk-17-jdk nginx
+      && chmod -R 771 /app/*
+      && chown -R \$(whoami):\$(whoami) /app/*
+      && cd /app/backend
+      && ./mvnw clean install
+      && ./mvnw spring-boot:run"
     ports:
       - 80:80
       - 8080:8080
-      - 3306:3306
-#&& mysql -u root -p'' -e 'CREATE DATABASE sevedemo;' \
-#&& mysql -u root -p'' -e 'DROP DATABASE sevedemo;' \
+      - 587:587
+  mysql:
+    image: mysql:latest
+    container_name: my-mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpsw
+      MYSQL_DATABASE: sevedemo
+      MYSQL_USER: sevedemo
+      MYSQL_PASSWORD: odiojava
+    volumes:
+      - ../db/sevedemo.sql:/docker-entrypoint-initdb.d/dump.sql
+      - mysql-data:/var/lib/mysql
+
+    ports:
+      - "3306:3306"
+    command: --init-file=/docker-entrypoint-initdb.d/dump.sql
+    #command: >
+    #  sh -c "service mysql start
+    #  && mysql -u root -p -e 'CREATE DATABASE sevedemo;'
+    #  && mysql -u root -p'rootpsw' sevedemo < /app/db/dump.sql"
