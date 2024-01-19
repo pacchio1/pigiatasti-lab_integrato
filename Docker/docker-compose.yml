@@ -1,38 +1,48 @@
-version: '3.8'
+version: '3'
 services:
-  ubuntu:
-    image: ubuntu:latest
-    volumes:
-      - ../backend:/app/backend
-      - ../frontend:/var/www/html
-    command: >
-      sh -c "apt-get update -y
-      && apt-get install -y openjdk-17-jdk nginx
-      && chmod -R 771 /app/*
-      && chown -R \$(whoami):\$(whoami) /app/*
-      && cd /app/backend
-      && ./mvnw clean install
-      && ./mvnw spring-boot:run"
-    ports:
-      - 80:80
-      - 8080:8080
-      - 587:587
   mysql:
     image: mysql:latest
-    container_name: my-mysql-container
+    container_name: mysql-sevedemo
+    ports:
+      - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: rootpsw
+      MYSQL_ROOT_PASSWORD: odiojava
       MYSQL_DATABASE: sevedemo
       MYSQL_USER: sevedemo
       MYSQL_PASSWORD: odiojava
     volumes:
-      - ../db/sevedemo.sql:/docker-entrypoint-initdb.d/dump.sql
-      - mysql-data:/var/lib/mysql
+      - mysql_data:/var/lib/mysql
 
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin-sevedemo
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: odiojava
     ports:
+      - "1234:80"
+    depends_on:
+      - mysql
+
+  ubuntu:
+    image: ubuntu:latest
+    container_name: ubuntu-sevedemo
+    ports:
+      - "8080:8080"
+      - "587:587"
+      - "80:80"
       - "3306:3306"
-    command: --init-file=/docker-entrypoint-initdb.d/dump.sql
-    #command: >
-    #  sh -c "service mysql start
-    #  && mysql -u root -p -e 'CREATE DATABASE sevedemo;'
-    #  && mysql -u root -p'rootpsw' sevedemo < /app/db/dump.sql"
+    volumes:
+      - ../backend:/app/backend
+      - ../frontend:/var/www/html
+      - ../db/sevedemo.sql:/db/sevedemo.sql
+    depends_on:
+      - mysql
+    command: sh -c "apt-get update -y
+      && apt-get install -y openjdk-17-jdk nginx
+      && export JAVA_HOME=/usr/lib/jvm/java-1.17.0-openjdk-amd64
+      && tail -f /dev/null" # keep container running mariadb-client mariadb-server
+volumes:
+  mysql_data:
+
