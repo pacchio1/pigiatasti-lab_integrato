@@ -1,18 +1,5 @@
 version: '3'
 services:
-  mysql:
-    image: mysql:latest
-    container_name: mysql-sevedemo
-    ports:
-      - "3306:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: odiojava
-      MYSQL_DATABASE: sevedemo
-      MYSQL_USER: sevedemo
-      MYSQL_PASSWORD: odiojava
-    volumes:
-      - mysql_data:/var/lib/mysql
-
   phpmyadmin:
     image: phpmyadmin:latest
     container_name: phpmyadmin-sevedemo
@@ -23,7 +10,7 @@ services:
     ports:
       - "1234:80"
     depends_on:
-      - mysql
+      - ubuntu
 
   ubuntu:
     image: ubuntu:latest
@@ -37,12 +24,17 @@ services:
       - ../backend:/app/backend
       - ../frontend:/var/www/html
       - ../db/sevedemo.sql:/db/sevedemo.sql
-    depends_on:
-      - mysql
+      - ../img:/var/www/html/img
+    environment:
+      MYSQL_ROOT_PASSWORD: odiojava
+      MYSQL_DATABASE: sevedemo
+      MYSQL_USER: sevedemo
+      MYSQL_PASSWORD: odiojava
+
     command: sh -c "apt-get update -y
-      && apt-get install -y openjdk-17-jdk nginx
+      && apt-get install -y openjdk-17-jdk nginx mariadb-client mariadb-server
       && export JAVA_HOME=/usr/lib/jvm/java-1.17.0-openjdk-amd64
-      && tail -f /dev/null" # keep container running mariadb-client mariadb-server
+      && tail -f /dev/null" # keep container running
 volumes:
   mysql_data:
 
