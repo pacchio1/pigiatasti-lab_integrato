@@ -1,2 +1,2 @@
 docker  exec -it  ubuntu-sevedemo /bin/bash
-
+cd cmd && chmod 711 run.sh && ./run.sh

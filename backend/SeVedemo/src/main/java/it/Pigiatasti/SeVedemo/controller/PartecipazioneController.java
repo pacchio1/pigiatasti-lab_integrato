@@ -11,7 +11,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-@CrossOrigin(origins = "*", allowCredentials = "true")
+
 @RestController
 @RequestMapping("/partecipation")
 public class PartecipazioneController {

@@ -24,7 +24,8 @@ services:
       - ../backend:/app/backend
       - ../frontend:/var/www/html
       - ../db/sevedemo.sql:/db/sevedemo.sql
-      - ../img:/var/www/html/img
+      - ../img:/var/www/img
+      - ../logo:/var/www
       - ../cmd:/cmd
     environment:
       MYSQL_ROOT_PASSWORD: odiojava
